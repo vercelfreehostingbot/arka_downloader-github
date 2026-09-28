@@ -1,0 +1,24 @@
+[Unit]
+Description=Arka Downloader Telegram Bot
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/Arka_Downloader
+EnvironmentFile=/root/Arka_Downloader/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/root/Arka_Downloader/venv/bin/python /root/Arka_Downloader/bot.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+KillSignal=SIGINT
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/root/Arka_Downloader/data /root/Arka_Downloader/downloads /root/Arka_Downloader/logs /root/Arka_Downloader/backups /root/Arka_Downloader/updates
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

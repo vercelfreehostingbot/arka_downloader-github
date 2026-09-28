@@ -1,0 +1,6 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: arka-downloader
+    static_configs:
+      - targets: ["arka-downloader:8080"]
